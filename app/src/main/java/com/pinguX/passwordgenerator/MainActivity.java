@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         final NumberPicker picker = findViewById(R.id.numPick);
         final RadioGroup selected=findViewById(R.id.radioGroup);
 
-        picker.setMinValue(8);
-        picker.setMaxValue(32);
+        picker.setMinValue(4);
+        picker.setMaxValue(16);
 
         genButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
                 int selectedId=selected.getCheckedRadioButtonId();
                 RadioButton r=(RadioButton)findViewById(selectedId);
 
-                String s=(String)r.getText();
-                int i=(Integer)picker.getValue();
-
-                txt.setText(generatePassword(s,i));
+                if(selectedId!=-1){
+                    String s=(String)r.getText();
+                    int i=(Integer)picker.getValue();
+                    txt.setText(generatePassword(s,i));
+                }
             }
         });
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         }
         char[] all=ary.toString().toCharArray();
 
-        for (int j = 0; j < i; j++) {
+        for (int j = 0; j < i-1; j++) {
             passwd.append(all[rnd.nextInt(all.length)]);
         }
         passwd.insert(rnd.nextInt(passwd.length()), all[rnd.nextInt(all.length)]);
