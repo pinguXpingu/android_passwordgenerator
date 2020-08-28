@@ -6,12 +6,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.security.SecureRandom;
 
@@ -37,7 +39,16 @@ public class MainActivity extends AppCompatActivity {
                 int selectedId=selected.getCheckedRadioButtonId();
                 RadioButton r=(RadioButton)findViewById(selectedId);
 
-                if(selectedId!=-1){
+                if(selectedId==-1){
+                    Context contxt=getApplicationContext();
+                    CharSequence msg="Select password type";
+                    int duration= Toast.LENGTH_SHORT;
+
+                    Toast t=Toast.makeText(contxt,msg,duration);
+                    t.setGravity(Gravity.BOTTOM|Gravity.CENTER,0,0);
+                    t.show();
+                }
+                else{
                     String s=(String)r.getText();
                     int i=(Integer)picker.getValue();
                     txt.setText(generatePassword(s,i));
@@ -52,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
                 ClipboardManager clip=(ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData pwdClip=ClipData.newPlainText("text",pwd);
                 clip.setPrimaryClip(pwdClip);
+
+                Context contxt=getApplicationContext();
+                CharSequence msg=pwd+" copied";
+                int duration= Toast.LENGTH_SHORT;
+
+                Toast t=Toast.makeText(contxt,msg,duration);
+                t.setGravity(Gravity.BOTTOM|Gravity.CENTER,0,0);
+                t.show();
             }
         });
 
