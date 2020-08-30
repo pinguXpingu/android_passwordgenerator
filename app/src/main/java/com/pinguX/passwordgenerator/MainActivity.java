@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private String generatePassword(String s, int i){
         final char[] nums="0123456789".toCharArray();
         final char[] alphas="abcdefghijklmnopqrstuvwxyzABCDEFGJKLMNPRSTUVWXYZ".toCharArray();
-        final char[] others="\"!'^+%&/()=?_<>#$6{}[]\\-*".toCharArray();
+        final char[] others="!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".toCharArray();
 
         SecureRandom rnd=new SecureRandom();
 
@@ -91,19 +91,97 @@ public class MainActivity extends AppCompatActivity {
         else if(s.equals("AlphaNumeric")) {
             ary.append(nums);
             ary.append(alphas);
+            ary.append(nums);
         }
         else if(s.equals("AllPrintables")) {
             ary.append(nums);
             ary.append(alphas);
             ary.append(others);
+            ary.append(nums);
         }
         char[] all=ary.toString().toCharArray();
 
-        for (int j = 0; j < i-1; j++) {
-            passwd.append(all[rnd.nextInt(all.length)]);
-        }
-        passwd.insert(rnd.nextInt(passwd.length()), all[rnd.nextInt(all.length)]);
+        char x;
 
-        return passwd.toString();
+        while (passwd.length()<i) {
+            x=all[rnd.nextInt(all.length)];
+
+            //if char exists do not append it
+            if(passwd.indexOf(String.valueOf(x))!=-1) {
+                continue;
+            }
+            else {
+                passwd.append(x);
+            }
+        }
+
+        //contain at least one number
+        if(s.equals("AlphaNumeric")) {
+            int c=0;
+            //check:
+            for (char P : passwd.toString().toCharArray()) {
+                for (char N : nums) {
+                    if(String.valueOf(P).equals(String.valueOf(N))) {
+                        c+=1;
+                        break;
+                    }
+                    else {
+                        continue;
+                    }
+                }
+            }
+            if(c==0) {
+                int a=rnd.nextInt(passwd.length());
+                char b=nums[rnd.nextInt(nums.length)];
+
+                passwd.deleteCharAt(passwd.length()-1);
+                passwd.insert(a,b);
+            }
+        }
+
+        //contain at least one punctuation char
+        if(s.equals("AllPrintables")) {
+            int cNum=0;
+            for (char P : passwd.toString().toCharArray()) {
+                for (char N : nums) {
+                    if(String.valueOf(P).equals(String.valueOf(N))) {
+                        cNum+=1;
+                        break;
+                    }
+                    else {
+                        continue;
+                    }
+                }
+            }
+            if(cNum==0) {
+                int a=rnd.nextInt(passwd.length());
+                char b=nums[rnd.nextInt(nums.length)];
+
+                passwd.deleteCharAt(passwd.length()-1);
+                passwd.insert(a,b);
+            }
+
+            int cPunc=0;
+            for (char P : passwd.toString().toCharArray()) {
+                for (char N : others) {
+                    if(String.valueOf(P).equals(String.valueOf(N))) {
+                        cPunc+=1;
+                        break;
+                    }
+                    else {
+                        continue;
+                    }
+                }
+            }
+            if(cPunc==0) {
+                int a=rnd.nextInt(passwd.length());
+                char b=others[rnd.nextInt(others.length)];
+
+                passwd.deleteCharAt(passwd.length()-1);
+                passwd.insert(a,b);
+            }
+        }
+
+        return (passwd.toString());
     }
 }
