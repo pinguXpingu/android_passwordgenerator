@@ -12,9 +12,9 @@
       "filters": [],
       "properties": [],
       "versionCode": 1,
-      "versionName": "1.0",
+      "versionName": "1.2",
       "enabled": true,
-      "outputFile": "app-release.apk"
+      "outputFile": "com.pinguX.passwordgenerator-1.2-release.apk"
     }
   ]
 }
