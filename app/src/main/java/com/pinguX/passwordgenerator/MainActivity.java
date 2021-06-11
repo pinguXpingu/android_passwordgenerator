@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 int selectedId=selected.getCheckedRadioButtonId();
                 RadioButton r=(RadioButton)findViewById(selectedId);
 
+                //if passwd type not selected
                 if(selectedId==-1){
                     Context contxt=getApplicationContext();
                     CharSequence msg="Select password type";
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder passwd=new StringBuilder();
         StringBuilder ary=new StringBuilder();
 
+        //fill ary according to selected pass type(s)
         if(s.equals("Numeric")) {
             ary.append(nums);
         }
@@ -99,16 +101,23 @@ public class MainActivity extends AppCompatActivity {
             ary.append(others);
             ary.append(nums);
         }
+
+        //ary has been filled
         char[] all=ary.toString().toCharArray();
 
         char x;
-
         while (passwd.length()<i) {
-            x=all[rnd.nextInt(all.length)];
+            x=all[rnd.nextInt(all.length)];//random char from all
 
-            //if char exists do not append it
-            if(passwd.indexOf(String.valueOf(x))!=-1) {
-                continue;
+            //nums has 10 char, so if passwd.length>10
+            // we cannot eliminate duplicates after 10th char:)
+            if (passwd.length()<10) {
+                //if char exists do not append it
+                if (passwd.indexOf(String.valueOf(x)) != -1) {
+                    continue;
+                } else {
+                    passwd.append(x);
+                }
             }
             else {
                 passwd.append(x);
@@ -117,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
         //contain at least one number
         if(s.equals("AlphaNumeric")) {
-            int c=0;
+            long c=0;
             //check:
             for (char P : passwd.toString().toCharArray()) {
                 for (char N : nums) {

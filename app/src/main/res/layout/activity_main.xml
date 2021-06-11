@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:layout_weight="1">
+    android:layout_weight="1"
+    android:background="@color/passgen1_background">
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -78,7 +79,8 @@
         android:layout_height="wrap_content"
         android:ems="11"
         android:inputType="text"
-        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/passgen1_text"
         android:layout_weight="0.02"
         android:layout_gravity="center"/>
 

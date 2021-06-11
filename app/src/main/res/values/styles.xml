@@ -1,10 +1,28 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:button">@style/buttonlar</item>
+        <item name="android:buttonStyle">@style/buttonlar</item>
+        <item name="radioButtonStyle">@style/radyolar</item>
+        <item name="android:numberPickerStyle">@style/numaralar</item>
+        <item name="android:textColorPrimary">@color/passgen1_text</item>
+        <item name="android:textSize">20dp</item>
     </style>
-
+    <style name="buttonlar" parent="android:Widget.Button">
+        <item name="android:background">@drawable/buttons</item>
+        <item name="android:textColor">@color/passgen1_text</item>
+        <item name="android:paddingHorizontal">50dp</item>
+        <item name="android:paddingVertical">10dp</item>
+    </style>
+    <style name="radyolar" parent="android:Widget.Material.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/passgen1_text</item>
+        <item name="android:buttonTint">@color/passgen1_button</item>
+    </style>
+    <style name="numaralar" parent="android:Widget.Material.NumberPicker">
+        <item name="android:background">@drawable/picker</item>
+    </style>
 </resources>

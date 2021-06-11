@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="passgen1_foreground">#FFEFA5</color>
+    <color name="passgen1_background">#222</color>
+    <color name="passgen1_button">#FF6200EE</color>
+    <color name="passgen1_press">#FFBB86FC</color>
+    <color name="passgen1_text">#eee</color>
+</resources>
