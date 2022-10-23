@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         final RadioGroup selected=findViewById(R.id.radioGroup);
 
         picker.setMinValue(4);
-        picker.setMaxValue(16);
+        picker.setMaxValue(32);
 
         genButton.setOnClickListener(new View.OnClickListener() {
             @Override
