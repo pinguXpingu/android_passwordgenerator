@@ -1,0 +1,8 @@
+### pinguXpasswordGenerator
+A very simple password generation app  
+Just select your password type and length  
+Generate password and copy to clipboard  
+#### App have three password options  
+* just numbers,  
+* alphabets numbers mixed,  
+* alphabets, numbers and all printable characters
