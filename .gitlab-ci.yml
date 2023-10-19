@@ -105,9 +105,9 @@ debugTests:
     - ./gradlew -Pci --console=plain :app:testDebug
 
 androidRelease:
-  needs: [lintDebug, assembleDebug, debugTests]
-  interruptible: true
-  stage: build
   script:
     - ./gradlew assembleRelease
-
+  release:
+    tag_name: v2.3-fdroid
+    description: 'F-Droid release 2.3'
+  
