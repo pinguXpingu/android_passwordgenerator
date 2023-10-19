@@ -77,11 +77,19 @@ before_script:
 
 androidRelease:
   stage: deploy
+  only:
+      - tags
+  variables:
+      FILE_NAME: '$CI_PROJECT_NAME-$CI_COMMIT_TAG.apk'
+
   script:
     - ./gradlew assembleRelease
   release:
-    tag_name: v2.3-fdroid
-    description: 'F-Droid release 2.3'
+    name: '$CI_COMMIT_TAG'
+    description: 'Release $CI_COMMIT_TAG: $CI_COMMIT_MESSAGE'
+    tag_name: '$CI_COMMIT_TAG'
+    #tag_name: v2.3-fdroid
+    #description: 'F-Droid release 2.3'
   artifacts:
     name: "${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}"
     paths:
