@@ -105,6 +105,7 @@ debugTests:
     - ./gradlew -Pci --console=plain :app:testDebug
 
 androidRelease:
+  stage: deploy
   script:
     - ./gradlew assembleRelease
   release:
