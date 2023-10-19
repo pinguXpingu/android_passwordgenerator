@@ -75,8 +75,6 @@ before_script:
   # Not necessary, but just for surity
   - chmod +x ./gradlew
 
-# Basic android and gradle stuff
-# Check linting
 androidRelease:
   stage: deploy
   script:
@@ -84,4 +82,7 @@ androidRelease:
   release:
     tag_name: v2.3-fdroid
     description: 'F-Droid release 2.3'
-  
+  artifacts:
+    name: "${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}"
+    paths:
+      - app/release/*.apk
