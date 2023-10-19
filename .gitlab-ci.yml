@@ -60,6 +60,8 @@ before_script:
   - unzip -q -d "$ANDROID_HOME/cmdline-tools" "$ANDROID_HOME/cmdline-tools.zip"
   - mv -T "$ANDROID_HOME/cmdline-tools/cmdline-tools" "$ANDROID_HOME/cmdline-tools/tools"
   - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/cmdline-tools/tools/bin
+  - curl --location --output /usr/local/bin/release-cli "https://gitlab.com/api/v4/projects/gitlab-org%2Frelease-cli/packages/generic/release-cli/latest/release-cli-linux-amd64"
+  - chmod +x /usr/local/bin/release-cli
 
   # Nothing fancy here, just checking sdkManager version
   - sdkmanager --version
@@ -75,7 +77,6 @@ before_script:
 
 # Basic android and gradle stuff
 # Check linting
-
 androidRelease:
   stage: deploy
   script:
