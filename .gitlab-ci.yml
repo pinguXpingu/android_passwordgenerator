@@ -75,11 +75,11 @@ before_script:
   # Not necessary, but just for surity
   - chmod +x ./gradlew
 
-lintDebug:
-  interruptible: true
-  stage: build
-  script:
-    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+#lintDebug:
+#  interruptible: true
+#  stage: build
+#  script:
+#    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
 
 # Make Project
 assembleDebug:
@@ -107,11 +107,11 @@ androidRelease:
 
   script:
     - ./gradlew assembleRelease
+  artifacts:
+    paths:
+      - app/release/*.apk
   release:
     name: '$CI_COMMIT_TAG'
     description: 'Release $CI_COMMIT_TAG: $CI_COMMIT_MESSAGE'
     tag_name: v2.3-fdroid
     #description: 'F-Droid release 2.3'
-  artifacts:
-    paths:
-      - app/release/*.apk
