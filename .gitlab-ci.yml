@@ -89,7 +89,7 @@ assembleDebug:
     - ./gradlew assembleDebug
   artifacts:
     paths:
-      - app/debug/*.apk
+      - app/debug/
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 debugTests:
@@ -109,7 +109,7 @@ androidRelease:
     - ./gradlew assembleRelease
   artifacts:
     paths:
-      - app/release/*.apk
+      - app/release/
   release:
     name: '$CI_COMMIT_TAG'
     description: 'Release $CI_COMMIT_TAG: $CI_COMMIT_MESSAGE'
