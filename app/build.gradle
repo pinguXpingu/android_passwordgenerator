@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 33
-
+/*
     signingConfigs {
         release {
             storeFile file(System.getenv('ANDROID_KEY_STOREFILE'))
@@ -11,7 +11,7 @@ android {
             keyPassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
         }
     }
-
+*/
     defaultConfig {
         applicationId "com.pinguX.passwordgenerator"
         minSdkVersion 26
@@ -28,7 +28,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
     }
     namespace 'com.pinguX.passwordgenerator'
