@@ -88,6 +88,7 @@ assembleDebug:
   script:
     - ./gradlew assembleDebug
     - cp -rvf app/build/outputs/apk/debug/*.apk $CI_PROJECT_DIR/app/release/debug.apk
+    - cp app/build/outputs/apk/debug/*.apk ./
   artifacts:
     paths:
       - app/debug/
