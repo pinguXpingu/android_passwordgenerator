@@ -87,7 +87,6 @@ assembleDebug:
   stage: build
   script:
     - ./gradlew assembleDebug
-    - cp -rvf app/build/outputs/apk/debug/*.apk $CI_PROJECT_DIR/app/release/debug.apk
   artifacts:
     paths:
       - app/debug/
@@ -108,7 +107,9 @@ androidRelease:
 
   script:
     - ./gradlew assembleRelease 
-    - cp -rvf app/build/outputs/apk/release/*.apk $CI_PROJECT_DIR/app/release/release.apk
+    - git add *.apk
+    - git commit -m "new release"
+    - git push origin master
   artifacts:
     paths:
       - app/release/
