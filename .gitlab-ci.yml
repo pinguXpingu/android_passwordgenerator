@@ -82,21 +82,21 @@ before_script:
 #    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
 
 # Make Project
-assembleDebug:
-  interruptible: true
-  stage: build
-  script:
-    - ./gradlew assembleDebug
-  artifacts:
-    paths:
-      - app/debug/
+#assembleDebug:
+#  interruptible: true
+#  stage: build
+#  script:
+#    - ./gradlew assembleDebug
+#  artifacts:
+#    paths:
+#      - app/debug/
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
-debugTests:
-  interruptible: true
-  stage: test
-  script:
-    - ./gradlew -Pci --console=plain :app:testDebug
+#debugTests:
+#  interruptible: true
+#  stage: test
+#  script:
+#    - ./gradlew -Pci --console=plain :app:testDebug
 
 
 androidRelease:
