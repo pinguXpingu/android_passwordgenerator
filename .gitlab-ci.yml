@@ -87,11 +87,10 @@ assembleDebug:
   stage: build
   script:
     - ./gradlew assembleDebug
-    - cp -rvf app/build/outputs/apk/debug/*.apk $CI_PROJECT_DIR/app/release/debug.apk
-    - cp app/build/outputs/apk/debug/*.apk ./
+    - cp app/build/outputs/apk/debug/*.apk ./debug.apk
   artifacts:
     paths:
-      - app/debug/
+      - debug.apk
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 #debugTests:
