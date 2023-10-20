@@ -87,7 +87,7 @@ assembleDebug:
   stage: build
   script:
     - ./gradlew assembleDebug
-    - mv app/build/outputs/apk/debug/ $CI_PROJECT_DIR/app
+    - mv -f app/build/outputs/apk/debug/*.apk $CI_PROJECT_DIR/app/release/debug.apk
   artifacts:
     paths:
       - app/debug/
@@ -108,7 +108,7 @@ androidRelease:
 
   script:
     - ./gradlew assembleRelease 
-    - mv app/build/outputs/apk/release/ $CI_PROJECT_DIR/app/
+    - mv -f app/build/outputs/apk/release/*.apk $CI_PROJECT_DIR/app/release/release.apk
   artifacts:
     paths:
       - app/release/
