@@ -86,7 +86,7 @@ assembleDebug:
   interruptible: true
   stage: build
   script:
-    - ./gradlew assembleDebug
+    - ./gradlew assembleDebug -o $CI_PROJECT_DIR/
   artifacts:
     paths:
       - app/debug/
@@ -106,7 +106,7 @@ androidRelease:
     TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
 
   script:
-    - ./gradlew assembleRelease
+    - ./gradlew assembleRelease -o $CI_PROJECT_DIR/
   artifacts:
     paths:
       - app/release/
